@@ -1,0 +1,144 @@
+---
+Policy Atlas - Michael Daniel Bowles, Independent for state house (MT) - 2026 
+"To make the government accountable."
+---
+<!-- Code licensed: Apache 2.0 -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact Michael Daniel</title>
+  <meta name="description" content="Send an inquiry or comment to Michael Daniel Bowles (Outlook inbox via Formspree).">
+  <style>
+    :root { --bg:#0b0b0b; --text:#e6e6e6; --muted:#9aa; --accent:#9ad1ff; --card:#111; }
+    html[data-theme="light"] { --bg:#fff; --text:#111; --muted:#666; --card:#fff; }
+    html { background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; }
+    main { max-width:720px; margin:48px auto; padding:24px; }
+    a { color:var(--accent); }
+    .small { color:var(--muted); font-size:0.95rem; }
+    input, textarea { width:100%; padding:8px; border-radius:6px; border:1px solid rgba(255,255,255,0.06); background:var(--card); color:var(--text); }
+    label { font-weight:600; margin-top:8px; display:block; }
+    button { padding:10px 14px; border-radius:6px; background:var(--accent); color:#000; border:none; cursor:pointer; }
+    .return-link { display:inline-block; margin-top:18px; padding:8px 12px; border-radius:6px; background:rgba(255,255,255,0.03); color:var(--text); text-decoration:none; }
+    @media print { nav, .return-link, #recaptcha-container, button { display:none !important; } html { color:#000; background:#fff; } a::after { content: " (" attr(href) ")"; font-size:0.85em; color:#444; } }
+  </style>
+
+  <!-- reCAPTCHA explicit render callback -->
+  <script>function onRecaptchaApiLoad(){window.recaptchaApiReady=true;}</script>
+  <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaApiLoad&render=explicit" async defer></script>
+</head>
+<body>
+  <main role="main" aria-labelledby="contact-heading">
+    <header>
+      <h1 id="contact-heading" style="margin:0 0 8px 0;">Contact</h1>
+      <p class="small" style="margin-top:6px;">
+        Send an inquiry or comment to <strong>Michael Daniel Bowles</strong> (redirects message to Outlook inbox via Formspree). They may send an email reply to your email address after you submit a message via this form.
+      </p>
+    </header>
+
+    <section aria-labelledby="form-heading" style="margin-top:18px;">
+      <h2 id="form-heading" style="font-size:1.05rem;margin-bottom:8px;">Message form</h2>
+
+      <form id="contactForm" action="https://formspree.io/f/mzdadqze" method="POST" style="display:grid;gap:10px;max-width:640px;">
+        <label for="name">Name</label>
+        <input id="name" name="name" autocomplete="name" required>
+
+        <label for="email">Email</label>
+        <input id="email" name="_replyto" type="email" autocomplete="email" required>
+
+        <label for="subject">Subject</label>
+        <input id="subject" name="subject" placeholder="e.g., Atlas inquiry: Topic 3" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+
+        <!-- Honeypot (hidden) -->
+        <div style="display:none;">
+          <label for="hp">Leave this field blank</label>
+          <input id="hp" name="hp" tabindex="-1" autocomplete="off">
+        </div>
+
+        <!-- reCAPTCHA container (explicit render) -->
+        <div id="recaptcha-container" aria-live="polite" style="margin-top:8px;"></div>
+
+        <!-- Optional: set subject and redirect after submit -->
+        <input type="hidden" name="_subject" value="Atlas inquiry">
+        <input type="hidden" name="_next" value="https://michaeldbowles.github.io/policy-atlas/contact-thanks.html">
+
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
+    <section id="privacy" style="margin-top:22px;">
+      <h2 style="font-size:1.05rem;margin-bottom:8px;">Privacy note</h2>
+      <p class="small">
+        Form submissions go to Formspree and are forwarded to an Outlook inbox monitored by Michael Daniel Bowles. Google reCAPTCHA v2 is used to prevent spam and may send device/usage data to Google. Submissions are not stored in this repository.
+      </p>
+    </section>
+
+    <footer style="margin-top:28px;" class="small">
+      <nav class="page-nav" aria-label="Page navigation">
+        <a href="/policy-atlas/page-9.html" class="small">← Previous</a>
+
+        <label for="pageSelector" class="small" style="margin-left:6px;margin-right:6px;">Jump to</label>
+        <select id="pageSelector" aria-label="Page selector">
+          <option value="/policy-atlas/index.html">0 — TOC / Intro</option>
+          <option value="/policy-atlas/page-1.html">1 — position statement</option>
+          <option value="/policy-atlas/page-2.html">2 — administration</option>
+          <option value="/policy-atlas/page-3.html">3 — powers reform</option>
+          <option value="/policy-atlas/page-4.html">4 — reprioritization</option>
+          <option value="/policy-atlas/page-5.html">5 — environment</option>
+          <option value="/policy-atlas/page-6.html">6 — civic strength</option>
+          <option value="/policy-atlas/page-7.html">7 — infrastructure</option>
+          <option value="/policy-atlas/page-8.html">8 — health systems</option>
+          <option value="/policy-atlas/page-9.html">9 — education</option>
+          <option value="/policy-atlas/contact.html" selected>10 — contact Michael Daniel</option>
+        </select>
+
+        <a href="/policy-atlas/index.html" class="small" style="margin-left:6px;">Table of contents →</a>
+      </nav>
+
+      <p class="small" style="margin-top:12px;">Content licensed: CC BY 4.0. Last updated: <strong>2026-Feb-19</strong></p>
+    </footer>
+  </main>
+
+  <script>
+    // Client site key provided by Google
+    const RECAPTCHA_SITE_KEY = '6LcpoGgsAAAAADgvgTqbuPob8fFAzENLQunYJD9T';
+
+    function renderRecaptcha() {
+      if (!window.recaptchaApiReady) return;
+      if (window.recaptchaWidgetId !== undefined) return;
+      window.recaptchaWidgetId = grecaptcha.render('recaptcha-container', {
+        'sitekey': RECAPTCHA_SITE_KEY,
+        'theme': document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light',
+        'callback': function(token){ /* token auto-included in form */ },
+        'expired-callback': function(){ /* optional: grecaptcha.reset(window.recaptchaWidgetId); */ }
+      });
+    }
+
+    // Render on first user interaction with the form
+    const form = document.getElementById('contactForm');
+    form.addEventListener('focusin', function onFirstFocus() {
+      renderRecaptcha();
+      form.removeEventListener('focusin', onFirstFocus);
+    }, { once: true });
+
+    // Ensure theme toggle elsewhere updates widget theme if wanted
+    window.addEventListener('themechange', () => {
+      if (window.recaptchaWidgetId !== undefined && grecaptcha && grecaptcha.reset) {
+        grecaptcha.reset(window.recaptchaWidgetId);
+        // re-render to pick up theme change if desired
+      }
+    });
+	
+    // Page selector behavior: navigate when user chooses a page
+    document.getElementById('pageSelector').addEventListener('change', function(){
+      const url = this.value;
+      if (url) window.location.href = url;
+    });
+
+  </script>
+</body>
+</html>
