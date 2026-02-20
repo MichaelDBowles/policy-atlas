@@ -61,7 +61,7 @@ layout: default
         </div>
 
         <!-- reCAPTCHA container (explicit render) -->
- 		<div id="recaptcha-container" class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+ 		<div id="recaptcha-container" aria-live="polite" style="margin-top:8px;"></div>
 
         <!-- Optional: set subject and redirect after submit -->
         <input type="hidden" name="_subject" value="Atlas inquiry">
@@ -104,7 +104,7 @@ layout: default
     </footer>
   </main>
 
-  <script>
+<script>
 // Client site key provided by Google
 const RECAPTCHA_SITE_KEY = '6LcpoGgsAAAAADgvgTqbuPob8fFAzENLQunYJD9T';
 
@@ -126,29 +126,15 @@ function renderRecaptcha() {
   });
 }
 
-    // Render on first user interaction with the form
-    const form = document.getElementById('contactForm');
-    form.addEventListener('focusin', function onFirstFocus() {
-      renderRecaptcha();
-      form.removeEventListener('focusin', onFirstFocus);
-    }, { once: true });
-
-    // Ensure theme toggle elsewhere updates widget theme if wanted
-    window.addEventListener('themechange', () => {
-      if (window.recaptchaWidgetId !== undefined && grecaptcha && grecaptcha.reset) {
-        grecaptcha.reset(window.recaptchaWidgetId);
-        // re-render to pick up theme change if desired
-      }
-    });
-	
-    // Page selector behavior: navigate when user chooses a page
-    document.getElementById('pageSelector').addEventListener('change', function(){
-      const url = this.value;
-      if (url) window.location.href = url;
-    });
-
-  </script>
+// Render on first user interaction with the form
+const form = document.getElementById('contactForm');
+form.addEventListener('focusin', function onFirstFocus() {
+  renderRecaptcha();
+  form.removeEventListener('focusin', onFirstFocus);
+}, { once: true });
+</script>
 </body>
 </html>
+
 
 
