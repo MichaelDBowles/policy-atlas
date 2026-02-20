@@ -61,7 +61,7 @@ layout: default
         </div>
 
         <!-- reCAPTCHA container (explicit render) -->
-        <div id="recaptcha-container" aria-live="polite" style="margin-top:8px;"></div>
+ 		<div id="recaptcha-container" class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
 
         <!-- Optional: set subject and redirect after submit -->
         <input type="hidden" name="_subject" value="Atlas inquiry">
@@ -105,19 +105,26 @@ layout: default
   </main>
 
   <script>
-    // Client site key provided by Google
-    const RECAPTCHA_SITE_KEY = '6LcpoGgsAAAAADgvgTqbuPob8fFAzENLQunYJD9T';
+// Client site key provided by Google
+const RECAPTCHA_SITE_KEY = '6LcpoGgsAAAAADgvgTqbuPob8fFAzENLQunYJD9T';
 
-    function renderRecaptcha() {
-      if (!window.recaptchaApiReady) return;
-      if (window.recaptchaWidgetId !== undefined) return;
-      window.recaptchaWidgetId = grecaptcha.render('recaptcha-container', {
-        'sitekey': RECAPTCHA_SITE_KEY,
-        'theme': document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light',
-        'callback': function(token){ /* token auto-included in form */ },
-        'expired-callback': function(){ /* optional: grecaptcha.reset(window.recaptchaWidgetId); */ }
-      });
+function onRecaptchaApiLoad() {
+  window.recaptchaApiReady = true;
+  renderRecaptcha();
+}
+
+function renderRecaptcha() {
+  if (!window.recaptchaApiReady) return;
+  if (window.recaptchaWidgetId !== undefined) return;
+
+  window.recaptchaWidgetId = grecaptcha.render('recaptcha-container', {
+    sitekey: RECAPTCHA_SITE_KEY,
+    theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light',
+    'expired-callback': function () {
+      // optional: grecaptcha.reset(window.recaptchaWidgetId);
     }
+  });
+}
 
     // Render on first user interaction with the form
     const form = document.getElementById('contactForm');
@@ -143,4 +150,5 @@ layout: default
   </script>
 </body>
 </html>
+
 
