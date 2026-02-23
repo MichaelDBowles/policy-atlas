@@ -21,6 +21,11 @@ layout: default
     .btn { display:inline-block; margin-top:18px; padding:10px 14px; border-radius:8px; background:var(--accent); color:#000; text-decoration:none; }
     .small { color:var(--muted); font-size:0.95rem; }
     @media print { .btn, nav { display:none !important; } html { color:#000; background:#fff; } a::after { content: " (" attr(href) ")"; font-size:0.85em; color:#444; } }
+	.page-nav { display:flex; gap:12px; align-items:center; margin-top:18px; }
+	.page-selector,
+	.page-nav {display: flex; gap: 12px; align-items: center; background: var(--card); color: var(--text); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 6px 10px; font-size: 0.95rem; user-select: none;}
+	.page-selector select#pageSelector,
+	.page-nav select#pageSelector {padding: 6px 8px; border-radius: 6px; background: var(--card); color: var(--text); border: 1px solid rgba(255,255,255,0.04);}
   </style>
 </head>
 <body>
@@ -42,7 +47,7 @@ layout: default
     <footer style="margin-top:28px;" class="small">
       <nav class="page-nav" aria-label="Page navigation">
         <label for="pageSelector" class="small" style="margin-left:6px;margin-right:6px;">Jump to</label>
-        <select id="pageSelector" aria-label="Page selector">
+        <select id="pageSelector" class="page-selector" aria-label="Page selector">
           <option value="/policy-atlas/index.html">0 — TOC / Intro</option>
           <option value="/policy-atlas/page-1.html">1 — position statement</option>
           <option value="/policy-atlas/page-2.html">2 — administration</option>
@@ -56,16 +61,24 @@ layout: default
           <option value="/policy-atlas/contact.html" selected>10 — contact Michael Daniel</option>
         </select>
       </nav>
-      <p class="small" style="margin-top:12px;">Content licensed: CC BY 4.0. Last updated: <strong>2026-Feb-19</strong></p>
+      <p class="small" style="margin-top:12px;">Content licensed: CC BY 4.0. Last updated: <strong>2026-Feb-23</strong></p>
     </footer>
   </main>
 	<script>
-    // Page selector behavior: navigate when user chooses a page
-    document.getElementById('pageSelector').addEventListener('change', function(){
-      const url = this.value;
-      if (url) window.location.href = url;
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.page-selector').forEach(sel => {
+    sel.addEventListener('change', e => {
+      const url = e.target.value;
+      if (!url) return;
+      // Optional: if you want the navigation to open in same tab
+      window.location.href = url;
+      // If you prefer a new tab, use:
+      // window.open(url, '_blank');
     });
+  });
+});
 	</script>
 </body>
 </html>
+
 
