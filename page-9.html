@@ -21,7 +21,12 @@ layout: default
     .entry-summary { margin:8px 0; }
     .entry-full { display:none; margin:8px 0; }
     .page-nav { display:flex; gap:12px; align-items:center; margin-top:18px; }
-    select#pageSelector { padding:6px 8px; border-radius:6px; background:var(--card); color:var(--text); border:1px solid rgba(255,255,255,0.04); }
+	.page-selector,
+	.page-nav {display: flex; gap: 12px; align-items: center; background: var(--card); color: var(--text); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 6px 10px; font-size: 0.95rem; user-select: none;}
+	.page-selector select#pageSelector,
+	.page-nav select#pageSelector {padding: 6px 8px; border-radius: 6px; background: var(--card); color: var(--text); border: 1px solid rgba(255,255,255,0.04);}
+	.page-selector.pageSelectorTop {position: sticky; top: 0; z-index: 40; justify-content: flex-start; border-bottom-left-radius: 0; border-bottom-right-radius: 0;}
+	.page-selector.pageSelectorBottom {position: sticky; bottom: 0; z-index: 40; justify-content: center; border-top-left-radius: 0; border-top-right-radius: 0;}
 	a, button { color:var(--accent); }
     @media print { nav, .return-link, button { display:none !important; } html { color:#000; background:#fff; } a::after { content: " (" attr(href) ")"; font-size:0.85em; color:#444; } }
   </style>
@@ -255,6 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
 
 
 
