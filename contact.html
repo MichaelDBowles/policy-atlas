@@ -16,6 +16,11 @@ layout: default
     html[data-theme="light"] { --bg:#fff; --text:#111; --muted:#666; --card:#fff; }
     html { background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; }
     main { max-width:720px; margin:48px auto; padding:24px; }
+    .page-nav { display:flex; gap:12px; align-items:center; margin-top:18px; }
+	  .page-selector,
+	  .page-nav {display: flex; gap: 12px; align-items: center; background: var(--card); color: var(--text); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 6px 10px; font-size: 0.95rem; user-select: none;}
+	  .page-selector select#pageSelector,
+	  .page-nav select#pageSelector {padding: 6px 8px; border-radius: 6px; background: var(--card); color: var(--text); border: 1px solid rgba(255,255,255,0.04);}
     a { color:var(--accent); }
     .small { color:var(--muted); font-size:0.95rem; }
     input, textarea { width:100%; padding:8px; border-radius:6px; border:1px solid rgba(255,255,255,0.06); background:var(--card); color:var(--text); }
@@ -83,7 +88,7 @@ layout: default
         <a href="/policy-atlas/page-9.html" class="small">← Previous</a>
 
         <label for="pageSelector" class="small" style="margin-left:6px;margin-right:6px;">Jump to</label>
-        <select id="pageSelector" aria-label="Page selector">
+        <select id="pageSelector" class="page-selector" aria-label="Page selector">
           <option value="/policy-atlas/index.html">0 — TOC / Intro</option>
           <option value="/policy-atlas/page-1.html">1 — position statement</option>
           <option value="/policy-atlas/page-2.html">2 — administration</option>
@@ -100,7 +105,7 @@ layout: default
         <a href="/policy-atlas/index.html" class="small" style="margin-left:6px;">Table of contents →</a>
       </nav>
 
-      <p class="small" style="margin-top:12px;">Content licensed: CC BY 4.0. Last updated: <strong>2026-Feb-19</strong></p>
+      <p class="small" style="margin-top:12px;">Content licensed: CC BY 4.0. Last updated: <strong>2026-Feb-22</strong></p>
     </footer>
   </main>
 
@@ -132,9 +137,23 @@ form.addEventListener('focusin', function onFirstFocus() {
   renderRecaptcha();
   form.removeEventListener('focusin', onFirstFocus);
 }, { once: true });
+  //page selector
+  document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.page-selector').forEach(sel => {
+    sel.addEventListener('change', e => {
+      const url = e.target.value;
+      if (!url) return;
+      // Optional: if you want the navigation to open in same tab
+      window.location.href = url;
+      // If you prefer a new tab, use:
+      // window.open(url, '_blank');
+    });
+  });
+});
 </script>
 </body>
 </html>
+
 
 
 
