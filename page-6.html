@@ -21,7 +21,11 @@ layout: default
     .entry-summary { margin:8px 0; }
     .entry-full { display:none; margin:8px 0; }
     .page-nav { display:flex; gap:12px; align-items:center; margin-top:18px; }
-    select#pageSelector { padding:6px 8px; border-radius:6px; background:var(--card); color:var(--text); border:1px solid rgba(255,255,255,0.04); }
+	.page-nav {display: flex; gap: 12px; align-items: center; background: var(--card); color: var(--text); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 6px 10px; font-size: 0.95rem; user-select: none;}
+	.page-selector select#pageSelector,
+	.page-nav select#pageSelector {padding: 6px 8px; border-radius: 6px; background: var(--card); color: var(--text); border: 1px solid rgba(255,255,255,0.04);}
+	.page-selector.pageSelectorTop {position: sticky; top: 0; z-index: 40; justify-content: flex-start; border-bottom-left-radius: 0; border-bottom-right-radius: 0;}
+	.page-selector.pageSelectorBottom {position: sticky; bottom: 0; z-index: 40; justify-content: center; border-top-left-radius: 0; border-top-right-radius: 0;}
     a, button { color:var(--accent); }
     @media print { nav, .return-link, button { display:none !important; } html { color:#000; background:#fff; } a::after { content: " (" attr(href) ")"; font-size:0.85em; color:#444; } }
   </style>
@@ -32,8 +36,8 @@ layout: default
       <nav class="page-nav" aria-label="Page navigation">
         <a href="/policy-atlas/page-5.html" class="small">← Previous</a>
 
-        <label for="pageSelector" class="small" style="margin-left:6px;margin-right:6px;">Jump to</label>
-        <select id="pageSelector" aria-label="Page selector">
+        <label for="pageSelectorTop" class="small" style="margin-left:6px;margin-right:6px;">Jump to</label>
+        <select id="pageSelectorTop" class="page-selector" aria-label="Page selector">
           <option value="/policy-atlas/index.html">0 — TOC / Intro</option>
           <option value="/policy-atlas/page-1.html">1 — position statement</option>
           <option value="/policy-atlas/page-2.html">2 — administration</option>
@@ -155,8 +159,8 @@ layout: default
       <nav class="page-nav" aria-label="Page navigation">
         <a href="/policy-atlas/page-5.html" class="small">← Previous</a>
 
-        <label for="pageSelector" class="small" style="margin-left:6px;margin-right:6px;">Jump to</label>
-        <select id="pageSelector" aria-label="Page selector">
+        <label for="pageSelectorBottom" class="small" style="margin-left:6px;margin-right:6px;">Jump to</label>
+        <select id="pageSelectorBottom" class="page-selector" aria-label="Page selector">
           <option value="/policy-atlas/index.html">0 — TOC / Intro</option>
           <option value="/policy-atlas/page-1.html">1 — position statement</option>
           <option value="/policy-atlas/page-2.html">2 — administration</option>
@@ -173,20 +177,25 @@ layout: default
         <a href="/policy-atlas/page-7.html" class="small" style="margin-left:6px;">Next →</a>
       </nav>
 
-      <p class="small" style="margin-top:12px;">Content licensed: CC BY 4.0. Last updated: <strong>2026-Feb-19</strong></p>
+      <p class="small" style="margin-top:12px;">Content licensed: CC BY 4.0. Last updated: <strong>2026-Feb-22</strong></p>
     </footer>
   </main>
 
   <script>
-    // Page selector behavior: navigate when user chooses a page
-    document.getElementById('pageSelector').addEventListener('change', function(){
-      const url = this.value;
-      if (url) window.location.href = url;
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.page-selector').forEach(sel => {
+    sel.addEventListener('change', e => {
+      const url = e.target.value;
+      if (!url) return;
+      // Optional: if you want the navigation to open in same tab
+      window.location.href = url;
+      // If you prefer a new tab, use:
+      // window.open(url, '_blank');
     });
-
-    // Expand/collapse entries see SCRAP for script
-
+  });
+});
   </script>
 </body>
 </html>
+
 
